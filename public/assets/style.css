@@ -182,3 +182,13 @@ html{scroll-behavior:auto}
 
 /* Soft golden glow on buttons */
 .main-btn,.cta-link-btn,.domain-btn{box-shadow:0 0 14px rgba(255,214,102,.38),0 0 30px rgba(245,176,45,.22)!important;border:1px solid rgba(255,215,110,.35)!important}
+
+/* Logo color (purple), no edge lines on buttons, about text */
+.hero h1{background:linear-gradient(100deg,#a64bf4 0%,#c548f0 50%,#e040fb 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+.main-btn,.cta-link-btn,.domain-btn{background-origin:border-box!important;background-clip:border-box!important}
+.about-section{max-width:720px;margin:34px auto 0;padding:0 22px;text-align:center}
+.about-section p{margin:0;line-height:1.8;font-size:15px}
+.about-bn{color:#d4d4da;font-size:16px}
+.about-en{color:#9a9ba4;margin-top:18px!important;padding-top:18px;border-top:1px solid rgba(255,255,255,.08)}
+
+.about-section p{white-space:pre-line}
