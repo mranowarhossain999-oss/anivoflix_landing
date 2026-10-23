@@ -148,3 +148,26 @@ html{scroll-behavior:auto}
   .search-card,.info-card{box-shadow:none!important}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+
+/* Updated compact search, refreshed button palette, and replacement CTA buttons */
+:root{--purple:#087f8c;--violet:#06a6a6;--pink:#16c79a;--gradient:linear-gradient(105deg,#087f8c 0%,#079e9e 52%,#16c79a 100%)}
+.brand-full{background:linear-gradient(100deg,#20c9b0 0%,#08a6a6 55%,#6ee7c8 100%);-webkit-background-clip:text;background-clip:text}
+.search-wrap{max-width:650px;margin-top:24px;padding-inline:18px}
+.search-card{max-width:620px;margin-inline:auto;padding:9px;border-radius:22px}
+.search-input{height:48px;border-radius:15px;padding:0 14px}
+.search-input svg{width:20px;margin-right:10px}
+.search-input input{font-size:16px}
+.search-btn{height:46px;margin-top:8px;border-radius:14px;font-size:14px}
+.search-input:focus-within{border-color:rgba(22,199,154,.8)}
+.hero{margin-top:42px}
+.main-btn,.domain-btn,.quick-btn,.get-app{background:var(--gradient)}
+.cta-links-section{max-width:720px;margin:42px auto 0;padding:0 20px;display:grid;gap:13px}
+.cta-link-btn{display:flex;align-items:center;justify-content:center;text-align:center;min-height:54px;padding:14px 20px;border-radius:16px;color:#fff;text-decoration:none;font-size:15px;line-height:1.45;font-weight:850;background:var(--gradient);border:1px solid rgba(255,255,255,.09)}
+.cta-link-btn[hidden]{display:none!important}
+.telegram-link{background:linear-gradient(105deg,#087f8c 0%,#079e9e 52%,#16c79a 100%)}
+@media(max-width:700px){.search-wrap{margin-top:18px}.search-card{padding:8px}.search-input{height:44px}.search-btn{height:43px;margin-top:7px}.hero{margin-top:38px}.cta-links-section{margin-top:32px;gap:11px}.cta-link-btn{font-size:14px;min-height:50px;padding:12px 14px}}
+.menu{border-color:rgba(22,199,154,.28)}
+.menu:hover{border-color:rgba(22,199,154,.7)}
+.drawer-close{border-color:rgba(22,199,154,.6);background:rgba(8,127,140,.12)}
+.category-item:hover,.category-item:first-child{background:linear-gradient(100deg,rgba(8,127,140,.28),rgba(22,199,154,.15))}

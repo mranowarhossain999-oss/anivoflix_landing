@@ -1,13 +1,12 @@
 const KEY="anivoflixLandingV1";
 const defaults={
  brandName:"AnivoFlix",domainSuffix:".com",heroName:"AnivoFlix",heroText:"Your ultimate destination for Movies, Anime & Series.",
- mainVisitText:"Visit Anivoflix.Com",mainVisitUrl:"https://anivoflix.com",searchButtonText:"SEARCH",searchTemplate:"https://anivoflix.com/search?q={query}",
+ mainVisitText:"Visit Anivoflix.Com",mainVisitUrl:"https://anivoflix.com",guideButtonUrl:"",telegramButtonUrl:"",searchButtonText:"SEARCH",searchTemplate:"https://anivoflix.com/search?q={query}",
  footerDescription:"Stream your favorite movies & series. Pick up where you left off, anytime. Switch servers with a single tap.",
  copyrightText:"ALL RIGHTS RESERVED",
  dmcaTitle:"DMCA / Disclaimer",dmcaText:"AnivoFlix does not host files on its own servers unless explicitly stated. Content may be linked from third-party services. For copyright concerns, please contact the appropriate hosting provider or site administrator.",
  domains:[],links:[],important:[],
  socials:[],
- getAppText:"GET THE APP",getAppUrl:"https://anivoflix.com",showGetApp:true,
  footerLinks:[{name:"ABOUT",url:"#about",show:true},{name:"CONTACT",url:"#contact",show:true},{name:"PRIVACY",url:"#privacy",show:true},{name:"TERMS",url:"#terms",show:true}],
  categories:[{name:"HOME",url:"https://anivoflix.com/",show:true},{name:"MOVIES",url:"https://anivoflix.com/movies",show:true},{name:"SERIES",url:"https://anivoflix.com/series",show:true},{name:"ANIME",url:"https://anivoflix.com/anime",show:true},{name:"SERIAL",url:"https://anivoflix.com/serial",show:true},{name:"TV SHOWS",url:"https://anivoflix.com/tv-shows",show:true},{name:"MINI DRAMA",url:"https://anivoflix.com/mini-drama",show:true}]
 };
@@ -18,7 +17,7 @@ function showStatus(message,ok=true){let box=$("saveStatus");if(!box){box=docume
 function persist(message="Saved successfully."){try{localStorage.setItem(KEY,JSON.stringify(d));showStatus(message,true);return true}catch(e){showStatus("Could not save. Browser storage may be blocked or full.",false);return false}}
 function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
 function input(v,cls=""){return `<input class="${cls}" value="${esc(v)}">`}
-function fill(){["brandName","domainSuffix","heroName","heroText","mainVisitText","mainVisitUrl","searchButtonText","searchTemplate","footerDescription","copyrightText","dmcaTitle","dmcaText","getAppText","getAppUrl"].forEach(k=>{if($(k))$(k).value=d[k]??""});if($("showGetApp"))$("showGetApp").checked=d.showGetApp!==false;renderDomains();renderLinks();renderImportant();renderSocials();renderFooterLinks();renderCategories();
+function fill(){["brandName","domainSuffix","heroName","heroText","mainVisitText","mainVisitUrl","searchButtonText","searchTemplate","footerDescription","copyrightText","dmcaTitle","dmcaText","guideButtonUrl","telegramButtonUrl"].forEach(k=>{if($(k))$(k).value=d[k]??""});renderDomains();renderLinks();renderImportant();renderSocials();renderFooterLinks();renderCategories();
 if($("footerDescriptionFooter"))$("footerDescriptionFooter").value=d.footerDescription||"";
 if($("copyrightTextFooter"))$("copyrightTextFooter").value=d.copyrightText||"ALL RIGHTS RESERVED"}
 function renderDomains(){const box=$("domains"),empty=$("noDomains");if(!box)return;if(!d.domains.length){box.innerHTML="";if(empty)empty.style.display="block";return}if(empty)empty.style.display="none";box.innerHTML=d.domains.map((x,i)=>`<div class="domain-item" data-index="${i}"><div class="domain-number">${i+1}</div><div class="domain-fields"><label>Button Name${input(x.name||"New Domain")}</label><label>Destination URL${input(x.url||"https://")}</label><label class="domain-show"><input class="domain-show-input" type="checkbox" ${x.show!==false?"checked":""}> Show this button</label><div class="domain-actions"><button class="mini save-domain" type="button" data-action="save-domain">Save Domain</button><button class="mini remove" type="button" data-action="delete-domain">Delete</button></div></div></div>`).join("")}
@@ -34,7 +33,11 @@ if(key==="important"||key==="footerLinks"||key==="categories"){d[key][i].name=in
 if(persist(message))render()}
 function saveSocial(row){const i=Number(row.dataset.index),ins=row.querySelectorAll("input"),file=ins[0].files[0];d.socials[i].name=ins[1].value.trim()||"Social";d.socials[i].url=ins[2].value.trim()||"https://";d.socials[i].icon=ins[3].value;d.socials[i].show=ins[4].checked;if(file){const r=new FileReader();r.onload=()=>{d.socials[i].image=r.result;if(persist("Social media saved."))renderSocials()};r.onerror=()=>showStatus("Could not read the selected image.",false);r.readAsDataURL(file)}else if(persist("Social media saved."))renderSocials()}
 $("saveSettings")?.addEventListener("click",()=>{["brandName","domainSuffix","heroName","heroText","mainVisitText","mainVisitUrl","searchButtonText","searchTemplate","footerDescription","copyrightText"].forEach(k=>d[k]=$(k).value);persist("Settings saved.")});
-$("saveFooterSettings")?.addEventListener("click",()=>{d.getAppText=$("getAppText").value;d.getAppUrl=$("getAppUrl").value;d.showGetApp=$("showGetApp").checked;persist("Footer settings saved.")});
+$("saveCtaLinks")?.addEventListener("click",()=>{
+ d.guideButtonUrl=$("guideButtonUrl").value.trim();
+ d.telegramButtonUrl=$("telegramButtonUrl").value.trim();
+ persist("Button links saved.");
+});
 $("saveFooterContent")?.addEventListener("click",()=>{
  d.footerDescription=$("footerDescriptionFooter").value;
  d.copyrightText=$("copyrightTextFooter").value;
