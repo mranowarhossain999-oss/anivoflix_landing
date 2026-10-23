@@ -179,3 +179,6 @@ html{scroll-behavior:auto}
 .guide-link{background:linear-gradient(105deg,#f59e0b 0%,#f97316 55%,#ef4444 100%)}
 .telegram-link{background:linear-gradient(105deg,#1d8fe0 0%,#229ed9 55%,#37aee2 100%)}
 .site-footer .footer-logo .brand-full{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:#ff1f3d;-webkit-text-fill-color:#ff1f3d}
+
+/* Soft golden glow on buttons */
+.main-btn,.cta-link-btn,.domain-btn{box-shadow:0 0 14px rgba(255,214,102,.38),0 0 30px rgba(245,176,45,.22)!important;border:1px solid rgba(255,215,110,.35)!important}

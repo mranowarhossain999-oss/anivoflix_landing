@@ -57,11 +57,5 @@ $("domainList").innerHTML=(d.domains||[]).filter(x=>x.show!==false).map(x=>`<a c
 const guideButton=$("guideButton"),telegramButton=$("telegramButton");
 if(guideButton){guideButton.href=d.guideButtonUrl||"#";if(d.guideButtonUrl){guideButton.target="_blank";guideButton.rel="noopener";}}
 if(telegramButton){telegramButton.href=d.telegramButtonUrl||"#";}
-const importantItems=(d.important||[]).filter(x=>x.show!==false);
-if($("importantLinks")){
-  $("importantLinks").innerHTML=importantItems.map(x=>`<li><a href="${esc(x.url)}">${esc(x.name)}</a></li>`).join("");
-  if($("importantSection")) $("importantSection").hidden=importantItems.length===0;
-}
-
 $("footerSocials").innerHTML=(d.socials||[]).filter(x=>x.show!==false).map(x=>`<a class="footer-social" href="${esc(x.url)}" target="_blank" rel="noopener">${x.image?`<img src="${esc(x.image)}" alt="" loading="lazy" decoding="async">`:x.icon?`<span class="footer-social-icon">${esc(x.icon)}</span>`:""}<span>${esc(x.name)}</span></a>`).join("");
 $("footerNav").innerHTML=(d.footerLinks||[]).filter(x=>x.show!==false).map(x=>`<a href="${esc(x.url)}">${esc(x.name)}</a>`).join("");
