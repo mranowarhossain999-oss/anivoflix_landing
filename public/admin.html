@@ -77,13 +77,13 @@ if (sessionStorage.getItem("anivoflix_admin_auth") !== "1") {
     </section>
 
     <section class="panel">
-      <h2>Get The App</h2>
+      <h2>Landing Page CTA Buttons</h2>
+      <p class="muted">Set the destination URLs for the two buttons shown where Explore used to be. Leave a URL empty to hide that button.</p>
       <div class="grid2">
-        <label>Button Text<input id="getAppText"></label>
-        <label>Destination URL<input id="getAppUrl"></label>
+        <label>“কিভাবে ডাউনলোড করবেন ও দেখবেন” URL<input id="guideButtonUrl" type="url" placeholder="https://example.com/guide"></label>
+        <label>Telegram Channel URL<input id="telegramButtonUrl" type="url" placeholder="https://t.me/your_channel"></label>
       </div>
-      <label class="inline-check"><input id="showGetApp" type="checkbox"> Show Get The App button</label>
-      <button class="save" id="saveFooterSettings">Save Footer Settings</button>
+      <button class="save" id="saveCtaLinks" type="button">Save Button Links</button>
     </section>
 
     <section class="panel">
