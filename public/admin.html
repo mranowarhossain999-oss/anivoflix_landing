@@ -36,9 +36,8 @@ if (sessionStorage.getItem("anivoflix_admin_auth") !== "1") {
         <label>Hero Description<input id="heroText"></label>
         <label>Main Button Text<input id="mainVisitText"></label>
         <label>Main Button URL<input id="mainVisitUrl"></label>
-        <label>Guide Box Title<input id="guideTitle"></label>
-        <label>Guide Box Small Text<input id="guideSub"></label>
-        <label class="wide">Guide Box URL<input id="guideUrl" placeholder="https://"></label>
+        <label>Search Button Text<input id="searchButtonText"></label>
+        <label>Search URL Template<input id="searchTemplate" placeholder="https://anivoflix.com/search?q={query}"></label>
         <label>Footer Description<input id="footerDescription"></label>
         <label>Copyright Text<input id="copyrightText"></label>
       </div>
@@ -48,13 +47,13 @@ if (sessionStorage.getItem("anivoflix_admin_auth") !== "1") {
     <section class="panel domain-manager">
       <div class="panel-title">
         <div>
-          <h2>Hero Buttons</h2>
-          <p class="muted">These appear next to the Main Button. Add, rename, show/hide or delete as many as you like.</p>
+          <h2>Domain Buttons</h2>
+          <p class="muted">Add, edit, show or delete any number of domain buttons. Each one can have its own destination URL.</p>
         </div>
-        <button id="addDomain" class="save small" type="button">Add Button</button>
+        <button id="addDomain" class="save small" type="button">Add Domain Button</button>
       </div>
       <div id="domains"></div>
-      <div id="noDomains" class="empty-state">No extra buttons yet. Tap Add Button to create one.</div>
+      <div id="noDomains" class="empty-state">No domain buttons added yet. Tap Add Domain Button to create one.</div>
     </section>
 
     <section class="panel">
@@ -63,8 +62,8 @@ if (sessionStorage.getItem("anivoflix_admin_auth") !== "1") {
     </section>
 
     <section class="panel">
-      <div class="panel-title"><h2>Action Buttons (Request / Telegram)</h2><button id="addSocial" class="save small" type="button">+ Add Button</button></div>
-      <p class="muted">Shown under the guide box. Change the text and link of each button, then Save. An icon image is optional.</p>
+      <div class="panel-title"><h2>Footer Social Buttons</h2><button id="addSocial" class="save small" type="button">+ Add Social Button</button></div>
+      <p class="muted">Upload an icon from your phone, set the title and destination, then Save.</p>
       <div id="socials"></div>
     </section>
 
@@ -75,6 +74,16 @@ if (sessionStorage.getItem("anivoflix_admin_auth") !== "1") {
         <label>Copyright Text<input id="copyrightTextFooter"></label>
       </div>
       <button class="save" id="saveFooterContent" type="button">Save Footer Content</button>
+    </section>
+
+    <section class="panel">
+      <h2>Get The App</h2>
+      <div class="grid2">
+        <label>Button Text<input id="getAppText"></label>
+        <label>Destination URL<input id="getAppUrl"></label>
+      </div>
+      <label class="inline-check"><input id="showGetApp" type="checkbox"> Show Get The App button</label>
+      <button class="save" id="saveFooterSettings">Save Footer Settings</button>
     </section>
 
     <section class="panel">
@@ -103,7 +112,6 @@ if (sessionStorage.getItem("anivoflix_admin_auth") !== "1") {
 
   </main>
 
-  <script src="/assets/defaults.js?v=4"></script>
-  <script src="/assets/admin.js?v=4"></script>
+  <script src="/assets/admin.js"></script>
 </body>
 </html>

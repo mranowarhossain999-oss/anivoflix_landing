@@ -8,10 +8,10 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/anivoflix_favicon_512.png">
 <link rel="apple-touch-icon" href="assets/anivoflix_favicon_512.png">
-<link rel="stylesheet" href="assets/style.css?v=4">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<div class="bg-glow" aria-hidden="true"></div>
+<div class="bg-orb orb-a"></div><div class="bg-orb orb-b"></div>
 
 <header class="topbar">
   <a class="brand" href="./" aria-label="AnivoFlix.com home">
@@ -32,19 +32,30 @@
 </aside>
 
 <main>
+  <section class="search-wrap">
+    <form id="searchForm" class="search-card">
+      <div class="search-input">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path>
+        </svg>
+        <input id="searchInput" autocomplete="off" placeholder="Search" aria-label="Search AnivoFlix">
+      </div>
+      <button id="searchButton" class="primary-btn search-btn" type="submit">SEARCH</button>
+    </form>
+
+    <div class="rotating-line" aria-live="polite">
+      <span id="rotatingWord">Movie</span><span class="fixed-phrase"> দেখুন Anivoflix এ</span>
+    </div>
+  </section>
+
   <section class="hero">
     <div class="eyebrow">WELCOME TO</div>
     <h1><span id="heroName">AnivoFlix</span></h1>
     <p id="heroText">Your ultimate destination for Movies, Anime & Series.</p>
-    <div class="hero-actions">
-      <a id="mainVisit" class="btn btn-primary" href="https://anivoflix.com" target="_blank" rel="noopener"><span id="mainVisitText">Visit Anivoflix.Com</span></a>
-      <div id="domainList" class="domain-list"></div>
-    </div>
-    <a id="guideBox" class="guide-box" href="#" target="_blank" rel="noopener">
-      <span class="guide-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13l11-6.5z"/></svg></span>
-      <span class="guide-text"><strong id="guideTitle">ডাউনলোড ও দেখার নিয়ম</strong><small id="guideSub">Watch and Download Tutorial</small></span>
+    <a id="mainVisit" class="main-btn" href="https://anivoflix.com" target="_blank" rel="noopener">
+      <span id="mainVisitText">Visit Anivoflix.Com</span>
     </a>
-    <div id="communityLinks" class="community-grid"></div>
+    <div id="domainList" class="domain-list"></div>
   </section>
 
   <section id="quickLinksSection" class="links-section">
@@ -68,13 +79,14 @@
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-logo"><span class="brand-full">AnivoFlix<span class="brand-domain">.Com</span></span></div>
+    <div id="footerSocials" class="footer-socials"></div>
+    <a id="getApp" class="get-app" href="#" target="_blank" rel="noopener"><span id="getAppText">GET THE APP</span></a>
     <p id="footerDescription" class="footer-description">Stream your favorite movies &amp; series. Pick up where you left off, anytime. Switch servers with a single tap.</p>
     <nav id="footerNav" class="footer-nav" aria-label="Footer links"></nav>
     <div class="copyright">© <span id="year"></span> <span id="copyrightName">ANIVOFLIX</span> — <span id="copyrightText">ALL RIGHTS RESERVED</span></div>
   </div>
 </footer>
 
-<script src="assets/defaults.js?v=4"></script>
-<script src="assets/app.js?v=4"></script>
+<script src="assets/app.js"></script>
 </body>
 </html>
