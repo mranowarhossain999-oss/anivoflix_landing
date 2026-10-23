@@ -132,83 +132,96 @@ footer{text-align:center;padding:60px 20px 82px;color:#777983;font-size:12px}.fo
 @media (hover:none) { .search-btn:hover,.main-btn:hover,.quick-btn:hover,.domain-btn:hover,.get-app:hover,.footer-social:hover,.social:hover { transform:none; filter:none; } }
 
 
-/* === ULTRA ATTRACTIVE NEON LIGHTING & ANIMATED GLOW BUTTONS === */
+/* === CLEAN SOLID GREEN BUTTONS (MATCHING REFERENCE) & MEDIUM SIZING === */
 :root {
-  --btn-neon-bg: linear-gradient(90deg, #00f2fe 0%, #4facfe 20%, #7f00ff 48%, #e100ff 75%, #ff0844 100%);
-}
-
-@keyframes bgShiftNeon {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes anivoSheen {
-  0%, 50%, 100% { transform: translateX(-150%) skewX(-22deg); opacity: 0; }
-  10% { opacity: 0.95; }
-  38% { transform: translateX(150%) skewX(-22deg); opacity: 0.95; }
-}
-
-@keyframes ultraNeonGlow {
-  0%, 100% {
-    box-shadow: 0 8px 25px rgba(127, 0, 255, 0.5),
-                0 0 16px rgba(0, 242, 254, 0.45),
-                0 0 32px rgba(255, 8, 68, 0.35),
-                inset 0 1px 2px rgba(255, 255, 255, 0.65);
-  }
-  50% {
-    box-shadow: 0 12px 36px rgba(225, 0, 255, 0.7),
-                0 0 26px rgba(0, 242, 254, 0.75),
-                0 0 48px rgba(255, 8, 68, 0.55),
-                inset 0 1px 3px rgba(255, 255, 255, 0.9);
-  }
+  --solid-green: #10b981;
+  --solid-green-hover: #059669;
 }
 
 .search-btn, .main-btn, .domain-btn, .quick-btn, .get-app {
-  background: var(--btn-neon-bg) !important;
-  background-size: 220% 220% !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.42) !important;
+  background: var(--solid-green) !important;
+  background-image: none !important;
+  border: none !important;
   color: #ffffff !important;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45), 0 0 14px rgba(255, 255, 255, 0.45);
-  position: relative;
-  overflow: hidden;
-  animation: bgShiftNeon 6s ease infinite, ultraNeonGlow 3.2s ease-in-out infinite !important;
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, filter 0.25s ease, border-color 0.25s ease !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25) !important;
+  animation: none !important;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 .search-btn:before, .main-btn:before, .domain-btn:before, .quick-btn:before, .get-app:before, .footer-social:before {
-  content: "" !important;
-  display: block !important;
-  position: absolute;
-  inset: -60%;
-  background: linear-gradient(110deg, transparent 40%, rgba(255, 255, 255, 0.65) 50%, transparent 60%) !important;
-  animation: anivoSheen 4.2s ease-in-out infinite !important;
-  pointer-events: none;
+  display: none !important;
+  animation: none !important;
 }
 
 .search-btn:hover, .main-btn:hover, .domain-btn:hover, .quick-btn:hover, .get-app:hover {
-  border-color: #00f2fe !important;
-  transform: translateY(-4px) scale(1.02) !important;
-  filter: brightness(1.15) saturate(1.2) !important;
-  box-shadow: 0 16px 42px rgba(127, 0, 255, 0.75),
-              0 0 32px rgba(0, 242, 254, 0.85),
-              0 0 55px rgba(255, 8, 68, 0.65),
-              inset 0 0 12px rgba(255, 255, 255, 0.75) !important;
+  background: var(--solid-green-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35) !important;
+  filter: none !important;
 }
 
 .search-btn:active, .main-btn:active, .domain-btn:active, .quick-btn:active, .get-app:active {
-  transform: scale(0.96) !important;
+  transform: scale(0.98) !important;
+}
+
+/* Medium / Compact Sizing for Buttons */
+.main-btn {
+  min-width: 210px !important;
+  padding: 11px 22px !important;
+  font-size: 15px !important;
+  border-radius: 14px !important;
+}
+
+.search-btn {
+  height: 50px !important;
+  border-radius: 14px !important;
+  font-size: 15px !important;
+}
+
+.search-card {
+  border-radius: 20px !important;
+  padding: 10px !important;
+}
+
+.search-input {
+  height: 50px !important;
+  border-radius: 14px !important;
+}
+
+.domain-btn {
+  min-height: 46px !important;
+  padding: 10px 16px !important;
+  border-radius: 12px !important;
+  font-size: 14px !important;
+}
+
+.quick-btn {
+  min-height: 52px !important;
+  border-radius: 14px !important;
+  font-size: 14px !important;
+  padding: 0 14px !important;
+}
+
+.get-app {
+  min-width: 220px !important;
+  min-height: 48px !important;
+  padding: 11px 20px !important;
+  border-radius: 14px !important;
+  font-size: 15px !important;
 }
 
 .menu, .drawer-close, .footer-social, .social {
-  border: 1px solid rgba(0, 242, 254, 0.38) !important;
-  background: linear-gradient(145deg, rgba(127, 0, 255, 0.16), rgba(255, 8, 68, 0.12)) !important;
-  box-shadow: 0 0 20px rgba(127, 0, 255, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.22) !important;
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  box-shadow: none !important;
+  transition: 0.2s ease !important;
 }
 
 .menu:hover, .drawer-close:hover, .footer-social:hover, .social:hover {
-  border-color: #00f2fe !important;
-  transform: translateY(-3px) !important;
-  box-shadow: 0 10px 28px rgba(127, 0, 255, 0.55), 0 0 24px rgba(0, 242, 254, 0.6) !important;
+  background: rgba(16, 185, 129, 0.15) !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: none !important;
 }
