@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+if (sessionStorage.getItem("anivoflix_admin_auth") !== "1") {
+  location.replace("/login");
+}
+</script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b0b0f">
+  <meta name="robots" content="noindex,nofollow">
+  <title>AnivoFlix Admin</title>
+  <link rel="stylesheet" href="/assets/admin.css">
+</head>
+<body>
+  <header class="admin-head">
+    <a href="./" class="back">← Landing Page</a>
+    <strong>AnivoFlix Admin</strong>
+    <div style="display:flex;gap:8px"><button id="logoutBtn" class="danger ghost">Logout</button><button id="resetBtn" class="danger ghost">Reset</button></div>
+  </header>
+
+  <main class="admin">
+    <div class="notice">
+      <strong>Static version:</strong> settings are stored in this browser using localStorage.
+      This is ideal for testing the landing page. A shared production admin that changes the live site for everyone needs a database/backend connection.
+    </div>
+
+    <section class="panel">
+      <h2>Brand & Hero</h2>
+      <div class="grid2">
+        <label>Brand Name<input id="brandName"></label>
+        <label>Brand Domain Suffix<input id="domainSuffix"></label>
+        <label>Hero Title<input id="heroName"></label>
+        <label>Hero Description<input id="heroText"></label>
+        <label>Main Button Text<input id="mainVisitText"></label>
+        <label>Main Button URL<input id="mainVisitUrl"></label>
+        <label>Search Button Text<input id="searchButtonText"></label>
+        <label>Search URL Template<input id="searchTemplate" placeholder="https://anivoflix.com/search?q={query}"></label>
+        <label>Footer Description<input id="footerDescription"></label>
+        <label>Copyright Text<input id="copyrightText"></label>
+      </div>
+      <button class="save" id="saveSettings">Save Settings</button>
+    </section>
+
+    <section class="panel domain-manager">
+      <div class="panel-title">
+        <div>
+          <h2>Domain Buttons</h2>
+          <p class="muted">Add, edit, show or delete any number of domain buttons. Each one can have its own destination URL.</p>
+        </div>
+        <button id="addDomain" class="save small" type="button">Add Domain Button</button>
+      </div>
+      <div id="domains"></div>
+      <div id="noDomains" class="empty-state">No domain buttons added yet. Tap Add Domain Button to create one.</div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title"><h2>Quick Link Buttons</h2><button id="addLink" class="save small">+ Add Button</button></div>
+      <div id="links"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title"><h2>Footer Social Buttons</h2><button id="addSocial" class="save small" type="button">+ Add Social Button</button></div>
+      <p class="muted">Upload an icon from your phone, set the title and destination, then Save.</p>
+      <div id="socials"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Footer Content</h2>
+      <div class="grid2">
+        <label>Footer Description<input id="footerDescriptionFooter"></label>
+        <label>Copyright Text<input id="copyrightTextFooter"></label>
+      </div>
+      <button class="save" id="saveFooterContent" type="button">Save Footer Content</button>
+    </section>
+
+    <section class="panel">
+      <h2>Get The App</h2>
+      <div class="grid2">
+        <label>Button Text<input id="getAppText"></label>
+        <label>Destination URL<input id="getAppUrl"></label>
+      </div>
+      <label class="inline-check"><input id="showGetApp" type="checkbox"> Show Get The App button</label>
+      <button class="save" id="saveFooterSettings">Save Footer Settings</button>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title"><h2>Footer Links</h2><button id="addFooterLink" class="save small" type="button">+ Add Link</button></div>
+      <div id="footerLinks"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title"><h2>Menu Categories</h2></div>
+      <p class="muted">These categories appear when the top menu button is opened. Admin Panel is intentionally excluded.</p>
+      <div id="categories"></div>
+    </section>
+
+    <section class="panel">
+      <h2>DMCA / Disclaimer</h2>
+      <label>Title<input id="dmcaTitle"></label>
+      <label>Text<textarea id="dmcaText" rows="6"></textarea></label>
+      <button class="save" id="saveDmca">Save Disclaimer</button>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title"><h2>Important Links</h2><button id="addImportant" class="save small">+ Add Link</button></div>
+      <div id="important"></div>
+    </section>
+
+
+  </main>
+
+  <script src="/assets/admin.js"></script>
+</body>
+</html>

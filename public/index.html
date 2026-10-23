@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#09070f">
+<title>AnivoFlix</title>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/anivoflix_favicon_512.png">
+<link rel="apple-touch-icon" href="assets/anivoflix_favicon_512.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="bg-orb orb-a"></div><div class="bg-orb orb-b"></div>
+
+<header class="topbar">
+  <a class="brand" href="./" aria-label="AnivoFlix.com home">
+    <span class="brand-full">AnivoFlix<span class="brand-domain">.Com</span></span>
+  </a>
+  <button class="menu" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="drawer" id="categoryDrawer" aria-hidden="true">
+  <div class="drawer-head">
+    <div class="drawer-brand"><span class="brand-full">AnivoFlix<span class="brand-domain">.Com</span></span></div>
+    <button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu">×</button>
+  </div>
+  <nav id="categoryNav" class="category-nav" aria-label="AnivoFlix categories"></nav>
+</aside>
+
+<main>
+  <section class="search-wrap">
+    <form id="searchForm" class="search-card">
+      <div class="search-input">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path>
+        </svg>
+        <input id="searchInput" autocomplete="off" placeholder="Search" aria-label="Search AnivoFlix">
+      </div>
+      <button id="searchButton" class="primary-btn search-btn" type="submit">SEARCH</button>
+    </form>
+
+    <div class="rotating-line" aria-live="polite">
+      <span id="rotatingWord">Movie</span><span class="fixed-phrase"> দেখুন Anivoflix এ</span>
+    </div>
+  </section>
+
+  <section class="hero">
+    <div class="eyebrow">WELCOME TO</div>
+    <h1><span id="heroName">AnivoFlix</span></h1>
+    <p id="heroText">Your ultimate destination for Movies, Anime & Series.</p>
+    <a id="mainVisit" class="main-btn" href="https://anivoflix.com" target="_blank" rel="noopener">
+      <span id="mainVisitText">Visit Anivoflix.Com</span>
+    </a>
+    <div id="domainList" class="domain-list"></div>
+  </section>
+
+  <section id="quickLinksSection" class="links-section">
+    <div class="section-title"><span>Explore</span><small>Quick Links</small></div>
+    <div id="quickLinks" class="quick-grid"></div>
+  </section>
+
+  <section id="importantSection" class="links-section important-section">
+    <div class="section-title"><span>Important Links</span></div>
+    <ul id="importantLinks" class="link-list"></ul>
+  </section>
+
+  <section class="info-section">
+    <div class="info-card">
+      <h2 id="dmcaTitle">DMCA / Disclaimer</h2>
+      <p id="dmcaText">AnivoFlix does not host files on its own servers unless explicitly stated. Content may be linked from third-party services. For copyright concerns, please contact the appropriate hosting provider or site administrator.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo"><span class="brand-full">AnivoFlix<span class="brand-domain">.Com</span></span></div>
+    <div id="footerSocials" class="footer-socials"></div>
+    <a id="getApp" class="get-app" href="#" target="_blank" rel="noopener"><span id="getAppText">GET THE APP</span></a>
+    <p id="footerDescription" class="footer-description">Stream your favorite movies &amp; series. Pick up where you left off, anytime. Switch servers with a single tap.</p>
+    <nav id="footerNav" class="footer-nav" aria-label="Footer links"></nav>
+    <div class="copyright">© <span id="year"></span> <span id="copyrightName">ANIVOFLIX</span> — <span id="copyrightText">ALL RIGHTS RESERVED</span></div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
