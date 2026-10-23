@@ -171,3 +171,11 @@ html{scroll-behavior:auto}
 .menu:hover{border-color:rgba(22,199,154,.7)}
 .drawer-close{border-color:rgba(22,199,154,.6);background:rgba(8,127,140,.12)}
 .category-item:hover,.category-item:first-child{background:linear-gradient(100deg,rgba(8,127,140,.28),rgba(22,199,154,.15))}
+
+/* Header, search and rotating line removed; hero is now the first section */
+.hero{margin-top:52px}
+.hero-domain{font-size:.55em;letter-spacing:-1px;margin-left:3px}
+.cta-links-section{margin-top:28px}
+.guide-link{background:linear-gradient(105deg,#f59e0b 0%,#f97316 55%,#ef4444 100%)}
+.telegram-link{background:linear-gradient(105deg,#1d8fe0 0%,#229ed9 55%,#37aee2 100%)}
+.site-footer .footer-logo .brand-full{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:#ff1f3d;-webkit-text-fill-color:#ff1f3d}

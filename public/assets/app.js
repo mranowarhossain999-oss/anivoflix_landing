@@ -49,20 +49,14 @@ $("footerDescription").textContent=d.footerDescription||defaults.footerDescripti
 $("copyrightName").textContent=(d.brandName||"AnivoFlix").toUpperCase();
 $("copyrightText").textContent=d.copyrightText||defaults.copyrightText;
 $("year").textContent=new Date().getFullYear();
-$("searchButton").textContent=d.searchButtonText||defaults.searchButtonText;
+$("heroDomain").textContent=d.domainSuffix||defaults.domainSuffix;
 document.title=(d.brandName||"AnivoFlix")+".Com";
-
-$("searchForm").addEventListener("submit",e=>{
- e.preventDefault();const q=$("searchInput").value.trim();if(!q)return;
- const t=d.searchTemplate||defaults.searchTemplate;
- location.href=t.includes("{query}")?t.replaceAll("{query}",encodeURIComponent(q)):t+encodeURIComponent(q);
-});
 
 $("domainList").innerHTML=(d.domains||[]).filter(x=>x.show!==false).map(x=>`<a class="domain-btn" href="${esc(x.url)}" target="_blank" rel="noopener"><span>${esc(x.name||"Visit")}</span></a>`).join("");
 // The former Explore/Quick Links block is replaced with two admin-configurable CTAs.
 const guideButton=$("guideButton"),telegramButton=$("telegramButton");
-if(guideButton){guideButton.href=d.guideButtonUrl||"#";guideButton.hidden=!d.guideButtonUrl;}
-if(telegramButton){telegramButton.href=d.telegramButtonUrl||"#";telegramButton.hidden=!d.telegramButtonUrl;}
+if(guideButton){guideButton.href=d.guideButtonUrl||"#";if(d.guideButtonUrl){guideButton.target="_blank";guideButton.rel="noopener";}}
+if(telegramButton){telegramButton.href=d.telegramButtonUrl||"#";}
 const importantItems=(d.important||[]).filter(x=>x.show!==false);
 if($("importantLinks")){
   $("importantLinks").innerHTML=importantItems.map(x=>`<li><a href="${esc(x.url)}">${esc(x.name)}</a></li>`).join("");
@@ -71,23 +65,3 @@ if($("importantLinks")){
 
 $("footerSocials").innerHTML=(d.socials||[]).filter(x=>x.show!==false).map(x=>`<a class="footer-social" href="${esc(x.url)}" target="_blank" rel="noopener">${x.image?`<img src="${esc(x.image)}" alt="" loading="lazy" decoding="async">`:x.icon?`<span class="footer-social-icon">${esc(x.icon)}</span>`:""}<span>${esc(x.name)}</span></a>`).join("");
 $("footerNav").innerHTML=(d.footerLinks||[]).filter(x=>x.show!==false).map(x=>`<a href="${esc(x.url)}">${esc(x.name)}</a>`).join("");
-
-$("categoryNav").innerHTML=(d.categories||defaults.categories).filter(x=>x.show!==false).map(x=>`<a class="category-item" href="${esc(x.url)}"><span>${esc(x.name)}</span></a>`).join("");
-const toggle=$("menuToggle"),drawer=$("categoryDrawer"),backdrop=$("drawerBackdrop"),close=$("drawerClose");
-function setDrawer(open){document.body.classList.toggle("drawer-open",open);drawer.setAttribute("aria-hidden",String(!open));toggle.setAttribute("aria-expanded",String(open));}
-toggle.addEventListener("click",()=>setDrawer(true));close.addEventListener("click",()=>setDrawer(false));backdrop.addEventListener("click",()=>setDrawer(false));
-drawer.addEventListener("click",e=>{if(e.target.closest("a"))setDrawer(false)});
-
-const rotatingWords=["Movie","Series","Anime","Serial","TV Shows","Mini Drama"];
-let rotatingIndex=0;const word=$("rotatingWord");
-let rotateTimer;
-function rotateWord(){
-  if(document.hidden)return;
-  rotatingIndex=(rotatingIndex+1)%rotatingWords.length;
-  word.textContent=rotatingWords[rotatingIndex];
-}
-rotateTimer=setInterval(rotateWord,5000);
-document.addEventListener("visibilitychange",()=>{
-  if(document.hidden){clearInterval(rotateTimer);rotateTimer=null}
-  else if(!rotateTimer)rotateTimer=setInterval(rotateWord,5000);
-});
