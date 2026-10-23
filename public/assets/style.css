@@ -131,97 +131,20 @@ footer{text-align:center;padding:60px 20px 82px;color:#777983;font-size:12px}.fo
 
 @media (hover:none) { .search-btn:hover,.main-btn:hover,.quick-btn:hover,.domain-btn:hover,.get-app:hover,.footer-social:hover,.social:hover { transform:none; filter:none; } }
 
-
-/* === CLEAN SOLID GREEN BUTTONS (MATCHING REFERENCE) & MEDIUM SIZING === */
-:root {
-  --solid-green: #10b981;
-  --solid-green-hover: #059669;
+/* MAX PERFORMANCE MODE: disable decorative lighting/shine and expensive paint effects */
+.search-btn,.main-btn,.quick-btn,.domain-btn,.get-app,.footer-social,.menu,.drawer-close,.info-card,.search-card,.social{box-shadow:none!important;filter:none!important}
+.search-btn:before,.main-btn:before,.quick-btn:before,.domain-btn:before,.get-app:before,.footer-social:before{display:none!important;animation:none!important;content:none!important}
+.search-btn:hover,.main-btn:hover,.quick-btn:hover,.domain-btn:hover,.get-app:hover,.footer-social:hover,.social:hover,.menu:hover{transform:none!important;filter:none!important;box-shadow:none!important}
+.search-btn,.main-btn,.quick-btn,.domain-btn,.get-app,.footer-social,.social,.menu{transition:none!important}
+.search-input:focus-within{box-shadow:none!important}
+.drawer-backdrop{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;transition:none!important}
+.drawer{box-shadow:none!important;transition:none!important}
+.category-item{transition:none!important}
+.category-item:hover{transform:none!important;box-shadow:none!important}
+html{scroll-behavior:auto}
+@media(max-width:700px){
+  body{background:#0b0713}
+  .bg-orb{display:none!important}
+  .search-card,.info-card{box-shadow:none!important}
 }
-
-.search-btn, .main-btn, .domain-btn, .quick-btn, .get-app {
-  background: var(--solid-green) !important;
-  background-image: none !important;
-  border: none !important;
-  color: #ffffff !important;
-  font-weight: 800 !important;
-  text-shadow: none !important;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25) !important;
-  animation: none !important;
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
-}
-
-.search-btn:before, .main-btn:before, .domain-btn:before, .quick-btn:before, .get-app:before, .footer-social:before {
-  display: none !important;
-  animation: none !important;
-}
-
-.search-btn:hover, .main-btn:hover, .domain-btn:hover, .quick-btn:hover, .get-app:hover {
-  background: var(--solid-green-hover) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35) !important;
-  filter: none !important;
-}
-
-.search-btn:active, .main-btn:active, .domain-btn:active, .quick-btn:active, .get-app:active {
-  transform: scale(0.98) !important;
-}
-
-/* Medium / Compact Sizing for Buttons */
-.main-btn {
-  min-width: 210px !important;
-  padding: 11px 22px !important;
-  font-size: 15px !important;
-  border-radius: 14px !important;
-}
-
-.search-btn {
-  height: 50px !important;
-  border-radius: 14px !important;
-  font-size: 15px !important;
-}
-
-.search-card {
-  border-radius: 20px !important;
-  padding: 10px !important;
-}
-
-.search-input {
-  height: 50px !important;
-  border-radius: 14px !important;
-}
-
-.domain-btn {
-  min-height: 46px !important;
-  padding: 10px 16px !important;
-  border-radius: 12px !important;
-  font-size: 14px !important;
-}
-
-.quick-btn {
-  min-height: 52px !important;
-  border-radius: 14px !important;
-  font-size: 14px !important;
-  padding: 0 14px !important;
-}
-
-.get-app {
-  min-width: 220px !important;
-  min-height: 48px !important;
-  padding: 11px 20px !important;
-  border-radius: 14px !important;
-  font-size: 15px !important;
-}
-
-.menu, .drawer-close, .footer-social, .social {
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  background: rgba(255, 255, 255, 0.03) !important;
-  box-shadow: none !important;
-  transition: 0.2s ease !important;
-}
-
-.menu:hover, .drawer-close:hover, .footer-social:hover, .social:hover {
-  background: rgba(16, 185, 129, 0.15) !important;
-  border-color: rgba(16, 185, 129, 0.4) !important;
-  transform: translateY(-1px) !important;
-  box-shadow: none !important;
-}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
