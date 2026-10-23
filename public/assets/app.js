@@ -1,6 +1,6 @@
 const KEY="anivoflixLandingV1";
 const defaults={
- brandName:"AnivoFlix",domainSuffix:".Com",heroName:"AnivoFlix",
+ brandName:"AnivoFlix",domainSuffix:".Com",heroName:"AnivoFlix.Com",
  heroText:"Your ultimate destination for Movies, Anime & Series.",
  mainVisitText:"Visit Anivoflix.Com",mainVisitUrl:"https://anivoflix.com",
  searchButtonText:"SEARCH",searchTemplate:"https://anivoflix.com/search?q={query}",
