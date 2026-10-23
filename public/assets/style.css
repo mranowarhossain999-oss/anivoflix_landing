@@ -192,3 +192,19 @@ html{scroll-behavior:auto}
 .about-en{color:#9a9ba4;margin-top:18px!important;padding-top:18px;border-top:1px solid rgba(255,255,255,.08)}
 
 .about-section p{white-space:pre-line}
+
+/* Logo colors taken from the AnivoFlix logo: purple -> magenta -> red */
+.hero h1,.site-footer .footer-logo .brand-full{background:linear-gradient(100deg,#8f35f5 0%,#b72bc4 45%,#f5193d 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;text-shadow:none}
+
+/* Typography polish: Poppins (English) + Hind Siliguri (Bangla) */
+body{font-family:"Poppins","Hind Siliguri",Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.hero p{font-weight:400;letter-spacing:.2px;line-height:1.7}
+.cta-link-btn,.main-btn{letter-spacing:.2px}
+.cta-link-btn{font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.about-section{max-width:700px;width:calc(100% - 40px);margin:36px auto 0;padding:30px 24px 28px;border:1px solid rgba(255,255,255,.09);border-radius:24px;background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.015));position:relative;overflow:hidden}
+.about-section:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(100deg,#8f35f5,#b72bc4 50%,#f5193d)}
+.about-bn{font-family:"Hind Siliguri","Poppins",sans-serif;font-size:17px;font-weight:500;line-height:1.95;color:#f0f0f6;text-wrap:pretty}
+.about-en{font-family:"Poppins","Hind Siliguri",sans-serif;font-size:14.5px;font-weight:400;line-height:1.85;letter-spacing:.15px;color:#a9aab8;border-top:0!important;padding-top:0!important;margin-top:22px!important;text-wrap:pretty}
+.about-en:before{content:"";display:block;width:64px;height:3px;border-radius:3px;margin:0 auto 22px;background:linear-gradient(100deg,#8f35f5,#f5193d)}
+.info-card h2{letter-spacing:.2px}
+.info-card p{line-height:1.85;color:#b4b5c2}
