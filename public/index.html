@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/anivoflix_favicon_512.png">
 <link rel="apple-touch-icon" href="assets/anivoflix_favicon_512.png">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v=4">
 </head>
 <body>
 <div class="bg-glow" aria-hidden="true"></div>
@@ -38,13 +38,12 @@
     <p id="heroText">Your ultimate destination for Movies, Anime & Series.</p>
     <div class="hero-actions">
       <a id="mainVisit" class="btn btn-primary" href="https://anivoflix.com" target="_blank" rel="noopener"><span id="mainVisitText">Visit Anivoflix.Com</span></a>
-      <a id="howTo" class="btn btn-outline" href="#" target="_blank" rel="noopener"><span id="howToText">কিভাবে দেখবো ও ডাউনলোড করব</span></a>
+      <div id="domainList" class="domain-list"></div>
     </div>
-    <div id="domainList" class="domain-list"></div>
-  </section>
-
-  <section id="communitySection" class="community-section">
-    <div class="section-title"><span>Join Our Community</span><small>Updates &amp; Support</small></div>
+    <a id="guideBox" class="guide-box" href="#" target="_blank" rel="noopener">
+      <span class="guide-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13l11-6.5z"/></svg></span>
+      <span class="guide-text"><strong id="guideTitle">ডাউনলোড ও দেখার নিয়ম</strong><small id="guideSub">Watch and Download Tutorial</small></span>
+    </a>
     <div id="communityLinks" class="community-grid"></div>
   </section>
 
@@ -75,6 +74,7 @@
   </div>
 </footer>
 
-<script src="assets/app.js"></script>
+<script src="assets/defaults.js?v=4"></script>
+<script src="assets/app.js?v=4"></script>
 </body>
 </html>
