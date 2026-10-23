@@ -13,44 +13,10 @@
 <body>
 <div class="bg-orb orb-a"></div><div class="bg-orb orb-b"></div>
 
-<header class="topbar">
-  <a class="brand" href="./" aria-label="AnivoFlix.com home">
-    <span class="brand-full">AnivoFlix<span class="brand-domain">.Com</span></span>
-  </a>
-  <button class="menu" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</header>
-
-<div class="drawer-backdrop" id="drawerBackdrop"></div>
-<aside class="drawer" id="categoryDrawer" aria-hidden="true">
-  <div class="drawer-head">
-    <div class="drawer-brand"><span class="brand-full">AnivoFlix<span class="brand-domain">.Com</span></span></div>
-    <button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu">×</button>
-  </div>
-  <nav id="categoryNav" class="category-nav" aria-label="AnivoFlix categories"></nav>
-</aside>
-
 <main>
-  <section class="search-wrap">
-    <form id="searchForm" class="search-card">
-      <div class="search-input">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path>
-        </svg>
-        <input id="searchInput" autocomplete="off" placeholder="Search" aria-label="Search AnivoFlix">
-      </div>
-      <button id="searchButton" class="primary-btn search-btn" type="submit">SEARCH</button>
-    </form>
-
-    <div class="rotating-line" aria-live="polite">
-      <span id="rotatingWord">Movie</span><span class="fixed-phrase"> দেখুন Anivoflix এ</span>
-    </div>
-  </section>
-
   <section class="hero">
     <div class="eyebrow">WELCOME TO</div>
-    <h1><span id="heroName">AnivoFlix</span></h1>
+    <h1><span id="heroName">AnivoFlix</span><span id="heroDomain" class="hero-domain">.Com</span></h1>
     <p id="heroText">Your ultimate destination for Movies, Anime & Series.</p>
     <a id="mainVisit" class="main-btn" href="https://anivoflix.com" target="_blank" rel="noopener">
       <span id="mainVisitText">Visit Anivoflix.Com</span>
@@ -59,8 +25,8 @@
   </section>
 
   <section id="quickLinksSection" class="cta-links-section" aria-label="Helpful links">
-    <a id="guideButton" class="cta-link-btn guide-link" href="#" hidden>কিভাবে ডাউনলোড করবেন ও দেখবেন</a>
-    <a id="telegramButton" class="cta-link-btn telegram-link" href="#" target="_blank" rel="noopener" hidden>আমাদের সাথে যুক্ত থাকতে এবং মুভি সিরিজ রিকুয়েষ্ট করতে টেলিগ্রাম চ্যানেল জয়েন করুন</a>
+    <a id="guideButton" class="cta-link-btn guide-link" href="#">ডাউনলোড ও দেখার নিয়ম</a>
+    <a id="telegramButton" class="cta-link-btn telegram-link" href="#" target="_blank" rel="noopener">সকল প্রকার আপডেট পেতে আমাদের টেলিগ্রাম চ্যানেল জয়েন করুন</a>
   </section>
 
   <section id="importantSection" class="links-section important-section">
