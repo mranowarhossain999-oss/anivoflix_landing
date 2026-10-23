@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<div class="bg-orb orb-a"></div><div class="bg-orb orb-b"></div>
+<div class="bg-glow" aria-hidden="true"></div>
 
 <header class="topbar">
   <a class="brand" href="./" aria-label="AnivoFlix.com home">
@@ -32,30 +32,20 @@
 </aside>
 
 <main>
-  <section class="search-wrap">
-    <form id="searchForm" class="search-card">
-      <div class="search-input">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path>
-        </svg>
-        <input id="searchInput" autocomplete="off" placeholder="Search" aria-label="Search AnivoFlix">
-      </div>
-      <button id="searchButton" class="primary-btn search-btn" type="submit">SEARCH</button>
-    </form>
-
-    <div class="rotating-line" aria-live="polite">
-      <span id="rotatingWord">Movie</span><span class="fixed-phrase"> দেখুন Anivoflix এ</span>
-    </div>
-  </section>
-
   <section class="hero">
     <div class="eyebrow">WELCOME TO</div>
     <h1><span id="heroName">AnivoFlix</span></h1>
     <p id="heroText">Your ultimate destination for Movies, Anime & Series.</p>
-    <a id="mainVisit" class="main-btn" href="https://anivoflix.com" target="_blank" rel="noopener">
-      <span id="mainVisitText">Visit Anivoflix.Com</span>
-    </a>
+    <div class="hero-actions">
+      <a id="mainVisit" class="btn btn-primary" href="https://anivoflix.com" target="_blank" rel="noopener"><span id="mainVisitText">Visit Anivoflix.Com</span></a>
+      <a id="howTo" class="btn btn-outline" href="#" target="_blank" rel="noopener"><span id="howToText">কিভাবে দেখবো ও ডাউনলোড করব</span></a>
+    </div>
     <div id="domainList" class="domain-list"></div>
+  </section>
+
+  <section id="communitySection" class="community-section">
+    <div class="section-title"><span>Join Our Community</span><small>Updates &amp; Support</small></div>
+    <div id="communityLinks" class="community-grid"></div>
   </section>
 
   <section id="quickLinksSection" class="links-section">
@@ -79,8 +69,6 @@
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-logo"><span class="brand-full">AnivoFlix<span class="brand-domain">.Com</span></span></div>
-    <div id="footerSocials" class="footer-socials"></div>
-    <a id="getApp" class="get-app" href="#" target="_blank" rel="noopener"><span id="getAppText">GET THE APP</span></a>
     <p id="footerDescription" class="footer-description">Stream your favorite movies &amp; series. Pick up where you left off, anytime. Switch servers with a single tap.</p>
     <nav id="footerNav" class="footer-nav" aria-label="Footer links"></nav>
     <div class="copyright">© <span id="year"></span> <span id="copyrightName">ANIVOFLIX</span> — <span id="copyrightText">ALL RIGHTS RESERVED</span></div>
