@@ -22,8 +22,7 @@ if (sessionStorage.getItem("anivoflix_admin_auth") !== "1") {
 
   <main class="admin">
     <div class="notice">
-      <strong>Note:</strong> settings are saved in this browser (localStorage), so changes show on this device/browser only.
-      To change the live site for everyone, a database/backend connection is needed.
+      <strong>Note:</strong> settings are saved online (Firestore), so every change shows on all devices and browsers.
     </div>
 
     <section class="panel">
@@ -97,6 +96,6 @@ if (sessionStorage.getItem("anivoflix_admin_auth") !== "1") {
     </section>
   </main>
 
-  <script src="/assets/admin.js?v=5"></script>
+  <script type="module" src="/assets/admin.js?v=8"></script>
 </body>
 </html>
