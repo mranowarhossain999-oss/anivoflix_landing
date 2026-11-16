@@ -17,6 +17,7 @@ const db = getFirestore(app);
 export const KEY = "anivoflixLandingV1"; // local copy, used only for instant first paint
 export const defaults={
  brandName:"AnivoFlix",domainSuffix:".Com",heroName:"AnivoFlix",
+ heroLead:"Watch & Download Movies",statusTitle:"Domain Status",
  heroText:"Your ultimate destination for Movies, Anime & Series.",
  mainVisitText:"Visit Anivoflix.Com",mainVisitUrl:"https://anivoflix.com",
  guideButtonText:"ডাউনলোড ও দেখার নিয়ম",guideButtonUrl:"",

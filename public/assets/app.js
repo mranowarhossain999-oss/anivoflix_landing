@@ -3,10 +3,34 @@ import { defaults, normalize, readCache, writeCache, fetchRemote } from "./store
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 
+const hostOf=u=>{try{return new URL(u).hostname}catch(e){return u}};
+// Reachability check from the visitor's own browser. A "no-cors" request succeeds
+// for any server that answers, and fails when the domain is blocked or down, which
+// is what matters to a visitor. Results are remembered so the page does not re-check.
+const status=new Map();
+function paint(url){
+  const ok=status.get(url);
+  document.querySelectorAll(".status-card").forEach(card=>{
+    if(card.dataset.url!==url)return;
+    const pill=card.querySelector(".status-pill");
+    pill.className="status-pill "+(ok===undefined?"wait":ok?"on":"off");
+    pill.textContent=ok===undefined?"Checking…":ok?"Online":"Offline";
+  });
+}
+function checkDomain(url){
+  if(status.has(url)){paint(url);return}
+  status.set(url,undefined);
+  const c=new AbortController(),t=setTimeout(()=>c.abort(),8000);
+  fetch(url,{mode:"no-cors",cache:"no-store",signal:c.signal})
+    .then(()=>true).catch(()=>false)
+    .then(ok=>{clearTimeout(t);status.set(url,ok);paint(url)});
+}
+
 function render(d){
 const txt=(k)=>d[k]||defaults[k];
 const brand=txt("brandName"),suffix=d.domainSuffix??defaults.domainSuffix;
 
+$("heroLead").textContent=txt("heroLead");
 $("heroName").textContent=txt("heroName");
 $("heroDomain").textContent=suffix;
 $("heroText").textContent=txt("heroText");
@@ -33,7 +57,22 @@ $("copyrightText").textContent=txt("copyrightText");
 $("year").textContent=new Date().getFullYear();
 document.title=brand+suffix;
 
-$("domainList").innerHTML=(d.domains||[]).filter(x=>x.show!==false).map(x=>`<a class="domain-btn" href="${esc(x.url)}" target="_blank" rel="noopener"><span>${esc(x.name||"Visit")}</span></a>`).join("");
+// Top bar + menu drawer
+$("topBrand").textContent=brand;$("topDomain").textContent=suffix;$("drawerBrand").textContent=brand+suffix;
+const navItem=(href,label,ext)=>`<a class="category-item" href="${esc(href)}"${ext?' target="_blank" rel="noopener"':""}><span>${esc(label)}</span></a>`;
+$("drawerNav").innerHTML=
+ navItem(txt("mainVisitUrl"),txt("mainVisitText"),true)+
+ navItem("#domains",txt("statusTitle"),false)+
+ (d.guideButtonUrl?navItem(d.guideButtonUrl,txt("guideButtonText"),true):"")+
+ (d.telegramButtonUrl?navItem(d.telegramButtonUrl,"Telegram",true):"");
+
+// Domain status: main domain first, then the extra domains from the admin panel.
+$("statusTitle").textContent=txt("statusTitle").toUpperCase();
+const list=[{name:brand+suffix,url:txt("mainVisitUrl")}].concat((d.domains||[]).filter(x=>x.show!==false&&x.url&&x.url!=="https://"));
+const seen=new Set();
+const rows=list.filter(x=>{if(seen.has(x.url))return false;seen.add(x.url);return true});
+$("domainStatus").innerHTML=rows.map(x=>`<a class="status-card" href="${esc(x.url)}" target="_blank" rel="noopener" data-url="${esc(x.url)}"><span><span class="status-name">${esc(x.name||"Visit")}</span><span class="status-host">${esc(hostOf(x.url))}</span></span><span class="status-pill wait">Checking…</span></a>`).join("");
+rows.forEach(x=>checkDomain(x.url));
 $("footerSocials").innerHTML=(d.socials||[]).filter(x=>x.show!==false).map(x=>`<a class="footer-social" href="${esc(x.url)}" target="_blank" rel="noopener">${x.image?`<img src="${esc(x.image)}" alt="" loading="lazy" decoding="async">`:x.icon?`<span class="footer-social-icon">${esc(x.icon)}</span>`:""}<span>${esc(x.name)}</span></a>`).join("");
 $("footerNav").innerHTML=(d.footerLinks||[]).filter(x=>x.show!==false).map(x=>`<a href="${esc(x.url)}">${esc(x.name)}</a>`).join("");
 
@@ -50,3 +89,12 @@ fetchRemote().then(remote=>{
   writeCache(data);
   render(data);
 }).catch(err=>console.error("Could not load landing settings:",err));
+
+
+// Menu drawer
+const setDrawer=open=>{document.body.classList.toggle("drawer-open",open);$("menuBtn").setAttribute("aria-expanded",String(open))};
+$("menuBtn").addEventListener("click",()=>setDrawer(!document.body.classList.contains("drawer-open")));
+$("drawerClose").addEventListener("click",()=>setDrawer(false));
+$("drawerBackdrop").addEventListener("click",()=>setDrawer(false));
+$("drawerNav").addEventListener("click",e=>{if(e.target.closest("a"))setDrawer(false)});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")setDrawer(false)});
