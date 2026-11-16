@@ -30,10 +30,11 @@ if (sessionStorage.getItem("anivoflix_admin_auth") !== "1") {
       <div class="grid2">
         <label>Brand Name (title, footer logo, copyright)<input id="brandName"></label>
         <label>Domain Suffix (e.g. .Com)<input id="domainSuffix"></label>
-        <label>Main Title<input id="heroName"></label>
+        <label>Heading first line (e.g. Watch &amp; Download Movies)<input id="heroLead"></label>
+        <label>Heading name after @ (e.g. AnivoFlix)<input id="heroName"></label>
         <label>Description<input id="heroText"></label>
       </div>
-      <button class="save" data-save="brandName,domainSuffix,heroName,heroText" type="button">Save Top Section</button>
+      <button class="save" data-save="brandName,domainSuffix,heroLead,heroName,heroText" type="button">Save Top Section</button>
     </section>
 
     <section class="panel">
@@ -52,8 +53,10 @@ if (sessionStorage.getItem("anivoflix_admin_auth") !== "1") {
     <section class="panel domain-manager">
       <div class="panel-title">
         <div>
-          <h2>3. Extra Domain Buttons</h2>
-          <p class="muted">Optional buttons shown under the Visit button. Add, edit, hide or delete.</p>
+          <h2>3. Domain Status List</h2>
+          <p class="muted">Shown in the "Domain Status" section. The main domain (Visit Button URL) is listed automatically; add backup domains here. Each one shows Online / Offline live.</p>
+          <label>Section title<input id="statusTitle"></label>
+          <button class="save small" data-save="statusTitle" type="button">Save Title</button>
         </div>
         <button id="addDomain" class="save small" type="button">+ Add Domain Button</button>
       </div>
@@ -96,6 +99,6 @@ if (sessionStorage.getItem("anivoflix_admin_auth") !== "1") {
     </section>
   </main>
 
-  <script type="module" src="/assets/admin.js?v=8"></script>
+  <script type="module" src="/assets/admin.js?v=9"></script>
 </body>
 </html>
