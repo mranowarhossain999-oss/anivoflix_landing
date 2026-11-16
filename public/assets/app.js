@@ -57,15 +57,6 @@ $("copyrightText").textContent=txt("copyrightText");
 $("year").textContent=new Date().getFullYear();
 document.title=brand+suffix;
 
-// Top bar + menu drawer
-$("topBrand").textContent=brand;$("topDomain").textContent=suffix;$("drawerBrand").textContent=brand+suffix;
-const navItem=(href,label,ext)=>`<a class="category-item" href="${esc(href)}"${ext?' target="_blank" rel="noopener"':""}><span>${esc(label)}</span></a>`;
-$("drawerNav").innerHTML=
- navItem(txt("mainVisitUrl"),txt("mainVisitText"),true)+
- navItem("#domains",txt("statusTitle"),false)+
- (d.guideButtonUrl?navItem(d.guideButtonUrl,txt("guideButtonText"),true):"")+
- (d.telegramButtonUrl?navItem(d.telegramButtonUrl,"Telegram",true):"");
-
 // Domain status: main domain first, then the extra domains from the admin panel.
 $("statusTitle").textContent=txt("statusTitle").toUpperCase();
 const list=[{name:brand+suffix,url:txt("mainVisitUrl")}].concat((d.domains||[]).filter(x=>x.show!==false&&x.url&&x.url!=="https://"));
@@ -89,12 +80,3 @@ fetchRemote().then(remote=>{
   writeCache(data);
   render(data);
 }).catch(err=>console.error("Could not load landing settings:",err));
-
-
-// Menu drawer
-const setDrawer=open=>{document.body.classList.toggle("drawer-open",open);$("menuBtn").setAttribute("aria-expanded",String(open))};
-$("menuBtn").addEventListener("click",()=>setDrawer(!document.body.classList.contains("drawer-open")));
-$("drawerClose").addEventListener("click",()=>setDrawer(false));
-$("drawerBackdrop").addEventListener("click",()=>setDrawer(false));
-$("drawerNav").addEventListener("click",e=>{if(e.target.closest("a"))setDrawer(false)});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")setDrawer(false)});

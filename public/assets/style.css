@@ -264,3 +264,7 @@ body{font-family:"Poppins","Hind Siliguri",Inter,system-ui,-apple-system,"Segoe 
 .topbar .brand-full,.drawer-brand.brand-full{background:linear-gradient(100deg,#8f35f5 0%,#b72bc4 45%,#f5193d 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 .hero2-at{background:linear-gradient(100deg,#8f35f5 0%,#b72bc4 45%,#f5193d 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .hero2 .main-btn{border:1px solid rgba(255,215,110,.35)}
+
+/* No top bar: give the hero a little more room at the top */
+.hero2{padding-top:56px}
+.hero2-at{margin-top:2px}
