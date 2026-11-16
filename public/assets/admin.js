@@ -1,4 +1,4 @@
-import { defaults, clone, normalize, readCache, writeCache, clearCache, fetchRemote, saveRemote } from "./store.js?v=8";
+import { defaults, clone, normalize, readCache, writeCache, clearCache, fetchRemote, saveRemote } from "./store.js?v=10";
 
 let d=normalize(readCache());const $=id=>document.getElementById(id);
 function showStatus(message,ok=true){let box=$("saveStatus");if(!box){box=document.createElement("div");box.id="saveStatus";document.body.appendChild(box)}box.textContent=message;box.className=ok?"ok":"error";clearTimeout(window.__saveTimer);window.__saveTimer=setTimeout(()=>box.className="",2200)}

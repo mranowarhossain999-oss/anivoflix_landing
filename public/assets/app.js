@@ -1,6 +1,7 @@
-import { defaults, normalize, readCache, writeCache, fetchRemote } from "./store.js?v=8";
+import { defaults, normalize, readCache, writeCache, fetchRemote } from "./store.js?v=10";
 
-const $=id=>document.getElementById(id);
+// Missing elements return a harmless stand-in, so one stale/mismatched file can never stop the whole page from rendering.
+const $=id=>document.getElementById(id)||{style:{},classList:{add(){},remove(){},toggle(){}},setAttribute(){},addEventListener(){},querySelector(){return null}};
 const esc=v=>String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 
 const hostOf=u=>{try{return new URL(u).hostname}catch(e){return u}};
