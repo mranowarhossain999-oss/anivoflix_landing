@@ -23,24 +23,24 @@
   <form class="login" id="loginForm">
     <div class="logo">Anivo<span>Flix</span></div>
     <div class="sub">Admin Panel Login</div>
-    <label>Username<input id="username" autocomplete="username" required></label>
-    <label>Password<input id="password" type="password" autocomplete="current-password" required></label>
-    <button type="submit">LOGIN</button>
-    <div id="error" class="error">Invalid username or password.</div>
+    <button type="submit">Sign in with Google</button>
+    <div id="error" class="error">Sign-in failed.</div>
   </form>
-  <script>
-    const USERNAME="Anowar";
-    const PASSWORD="Anowar3.0@";
-    if(sessionStorage.getItem("anivoflix_admin_auth")==="1") location.replace("/admin");
-    document.getElementById("loginForm").addEventListener("submit",e=>{
-      e.preventDefault();
-      const u=document.getElementById("username").value;
-      const p=document.getElementById("password").value;
-      if(u===USERNAME && p===PASSWORD){
-        sessionStorage.setItem("anivoflix_admin_auth","1");
+  <script type="module">
+    import { auth, googleProvider, signInWithPopup, onAuthStateChanged } from "/assets/auth.js?v=12";
+    const err=document.getElementById("error"),btn=document.querySelector("button");
+    onAuthStateChanged(auth,u=>{ if(u) location.replace("/admin"); });
+    document.getElementById("loginForm").addEventListener("submit",async e=>{
+      e.preventDefault(); err.style.display="none"; btn.disabled=true;
+      try{
+        await signInWithPopup(auth,googleProvider);
         location.replace("/admin");
-      }else{
-        document.getElementById("error").style.display="block";
+      }catch(ex){
+        if(ex.code!=="auth/popup-closed-by-user"&&ex.code!=="auth/cancelled-popup-request"){
+          err.textContent=ex.code==="auth/unauthorized-domain"?"This domain is not in Firebase Authorized domains.":"Sign-in failed. Please try again.";
+          err.style.display="block";
+        }
+        btn.disabled=false;
       }
     });
   </script>

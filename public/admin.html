@@ -1,11 +1,7 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="auth-pending">
 <head>
-<script>
-if (sessionStorage.getItem("anivoflix_admin_auth") !== "1") {
-  location.replace("/login");
-}
-</script>
+<style>html.auth-pending body{display:none}</style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0b0b0f">
@@ -99,6 +95,6 @@ if (sessionStorage.getItem("anivoflix_admin_auth") !== "1") {
     </section>
   </main>
 
-  <script type="module" src="/assets/admin.js?v=11"></script>
+  <script type="module" src="/assets/admin.js?v=12"></script>
 </body>
 </html>
