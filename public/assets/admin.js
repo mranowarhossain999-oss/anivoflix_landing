@@ -1,4 +1,5 @@
-import { defaults, clone, normalize, readCache, writeCache, clearCache, fetchRemote, saveRemote } from "./store.js?v=11";
+import { auth, onAuthStateChanged, signOut } from "./auth.js?v=12";
+import { defaults, clone, normalize, readCache, writeCache, clearCache, fetchRemote, saveRemote } from "./store.js?v=12";
 
 let d=normalize(readCache());const $=id=>document.getElementById(id);
 function showStatus(message,ok=true){let box=$("saveStatus");if(!box){box=document.createElement("div");box.id="saveStatus";document.body.appendChild(box)}box.textContent=message;box.className=ok?"ok":"error";clearTimeout(window.__saveTimer);window.__saveTimer=setTimeout(()=>box.className="",2200)}
@@ -37,9 +38,15 @@ bind("domains","domain-item",(b,r,i)=>{if(b.dataset.action==="save-domain")saveR
 bind("socials","social-admin-row",(b,r,i)=>{if(b.dataset.action==="save-social")saveSocial(r);if(b.dataset.action==="delete-social")removeItem("socials",i,renderSocials)});
 bind("footerLinks","footer-link-row",(b,r,i)=>{if(b.dataset.action==="save-footer-link")saveRow(r,"footerLinks",renderFooterLinks,"Footer link saved.");if(b.dataset.action==="delete-footer-link")removeItem("footerLinks",i,renderFooterLinks)});
 $("resetBtn").addEventListener("click",async()=>{if(!confirm("Reset all landing page settings for everyone?"))return;clearCache();d=clone(defaults);fill();await persist("All settings reset.")});
-$("logoutBtn").addEventListener("click",()=>{sessionStorage.removeItem("anivoflix_admin_auth");location.replace("/login")});
-// Show what this browser has now, then load the live settings from Firestore.
-// If nothing is published yet, the settings previously saved in this browser are
-// kept, and the next Save publishes them for everyone.
-fill();
-fetchRemote().then(remote=>{if(remote){d=normalize(remote);writeCache(d);fill()}else showStatus("Nothing published yet — press any Save to publish for everyone.",true)}).catch(e=>{console.error(e);showStatus("Could not load live settings.",false)});
+$("logoutBtn").addEventListener("click",async()=>{await signOut(auth);location.replace("/login")});
+// Admin UI only starts once Firebase confirms a signed-in user. (Real protection is the Firestore rules.)
+onAuthStateChanged(auth,user=>{
+ if(!user){location.replace("/login");return}
+ document.documentElement.classList.remove("auth-pending");
+ // Show what this browser has now, then load the live settings from Firestore.
+ // If nothing is published yet, the settings previously saved in this browser are
+ // kept, and the next Save publishes them for everyone.
+ fill();
+ fetchRemote().then(remote=>{if(remote){d=normalize(remote);writeCache(d);fill()}else showStatus("Nothing published yet — press any Save to publish for everyone.",true)}).catch(e=>{console.error(e);showStatus("Could not load live settings.",false)});
+ 
+});

@@ -1,17 +1,6 @@
-import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// Same Firebase project as the main AnivoFlix site. Settings live in Firestore
-// (site_settings/landing) so every visitor/device sees the same content.
-const firebaseConfig = {
-  apiKey: "AIzaSyDcxQG3bBZziMtUR4usMp-wtwhBdkE5lHc",
-  authDomain: "dramalinktg.firebaseapp.com",
-  projectId: "dramalinktg",
-  storageBucket: "dramalinktg.firebasestorage.app",
-  messagingSenderId: "506843084188",
-  appId: "1:506843084188:web:9f1a61051ef52401a04459"
-};
-const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+import { app } from "./firebase.js?v=12";
 const db = getFirestore(app);
 
 export const KEY = "anivoflixLandingV1"; // local copy, used only for instant first paint

@@ -1,4 +1,4 @@
-import { defaults, normalize, readCache, writeCache, fetchRemote } from "./store.js?v=11";
+import { defaults, normalize, readCache, writeCache, fetchRemote } from "./store.js?v=12";
 
 // Missing elements return a harmless stand-in, so one stale/mismatched file can never stop the page.
 const $=id=>document.getElementById(id)||{style:{},classList:{add(){},remove(){},toggle(){}},setAttribute(){},addEventListener(){},querySelector(){return null}};
