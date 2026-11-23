@@ -20,3 +20,9 @@ Workers & Pages → Create → Import a repository → select this repo.
 ## Notes
 - Unknown URLs show `404.html`, which redirects to `/`.
 - `/admin` and `/login` are the admin pages (noindex).
+
+## Admin security (Firebase Auth, Google sign-in)
+1. Firebase Console -> Authentication -> Sign-in method -> enable **Google**.
+2. Authentication -> Settings -> Authorized domains -> add your Cloudflare domain(s).
+3. Firestore Database -> create database, then Rules -> paste `firestore.rules`, replace `YOUR_ADMIN_EMAIL` with your Google email, Publish.
+Using a different Firebase project? Edit only `public/assets/firebase.js`.

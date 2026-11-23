@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Landing page settings: anyone can read, only the admin can write.
+    // Replace mranowarhossain999@gmail.com with the Google account you sign in with.
+    match /site_settings/landing {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && request.auth.token.email == "mranowarhossain999@gmail.com"
+                   && request.auth.token.email_verified == true;
+    }
+
+    // IMPORTANT: if the main AnivoFlix site shares this Firebase project,
+    // merge these rules with its existing ones instead of replacing them.
+  }
+}
