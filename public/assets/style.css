@@ -268,3 +268,12 @@ body{font-family:"Poppins","Hind Siliguri",Inter,system-ui,-apple-system,"Segoe 
 /* No top bar: give the hero a little more room at the top */
 .hero2{padding-top:56px}
 .hero2-at{margin-top:2px}
+
+
+/* ===== New 3D logo (header + footer) ===== */
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.hero2 h1 .hero2-at{display:block;margin-top:10px;-webkit-text-fill-color:initial}
+.hero-logo{display:block;width:min(88vw,520px);height:auto;margin:0 auto}
+.ph-bar .ph-logo{height:11px;width:auto;display:block}
+.site-footer .footer-logo{display:flex;justify-content:center;font-size:0;line-height:0}
+.footer-logo-img{display:block;width:min(86vw,440px);height:auto}
